@@ -16,8 +16,8 @@ for valor in array1:
     #array1[valor] = int(input(f"Ingrese el valor número {valor + 1} :"))
     array1[valor] = int(random.random() * 100)
 
-for i in array2:
-    array2[-i] = array1[i]
+for i in range(len(array2)-1,-1,-1):
+    array2[i] = array1[len(array1) - i-1]
 
 print(array1)
 print(array2)
