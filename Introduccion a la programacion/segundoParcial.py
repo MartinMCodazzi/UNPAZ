@@ -1,41 +1,16 @@
 # 12/11/2022
 # Martín Nahuel Muñoz Codazzi
 
-"""
-Desarrollar un algoritmo que permita mediante un menú de opciones :
-
-1- Realizar la carga de un vector de 5 posiciones con valores enteros positivos.
- En caso que ingrese un valor menor a cero debera completar todo lo que resta del vector con cero.
-
-2- Valores del vector superiores a X .
-
-3- Mostrar el vector cargado
-
-4- Salir
-
-Ejemplo
-
-Opcion 1 
-
-Si se ingresan 12,3,5,-1 el arreglo que queda cargado deberia ser este
-12	3	5	0	0
-
-Opcion 2
-Si elige la opcion 2  el algoritmo deberá pedir el valor de X. Si en este ejemplo X fuera 4 solo mostraría el valor 12 y 5.
-
-FUNCIONES: IMPLEMENTAR AL MENOS 2 FUNCIONES"""
 import array
 #Inicializo variables
 vectorOrigen = array.array("i",[0,0,0,0,0])
-seleccionMenuPrincipal = 0
-vectorCargado = False
 
 # Defino funciones
 
 def separador(sep="*",veces=25):
     print(f"{sep}" * veces)
 
-def menuPrincipal():
+def imprimirMenuPrincipal():
     separador("-")
     print("Menú Principal")
     separador("-")
@@ -75,36 +50,41 @@ def mayoresANumero(numeroAComparar,vector):
 
 def mostrarVector(vector):
     separador()
+    print("Se ha cargado el siguiente vector:")
     for numero in vector:
         print(numero)
     leerIngreso()
 
+def logicaMenuPrincipal():
+    seleccionMenuPrincipal = 0
+    vectorCargado = False
+    while (seleccionMenuPrincipal != 4):
+        seleccionMenuPrincipal = imprimirMenuPrincipal()
+        separador("-")
+        if (seleccionMenuPrincipal == 1):
+           cargaVector(vectorOrigen)
+           vectorCargado = True
+        elif (seleccionMenuPrincipal == 2):
+            if (vectorCargado == True):
+                #pondría un try
+                numero = int(leerIngreso("Ingrese un número con el que comparar : "))
+                mayoresANumero(numero,vectorOrigen)
+            else:
+                leerIngreso("El vector aún no ha sido cargado, pulse Enter para continuar ")
+        elif (seleccionMenuPrincipal == 3):
+            if (vectorCargado == True):
+                mostrarVector(vectorOrigen)
+            else:
+                leerIngreso("El vector aún no ha sido cargado, pulse Enter para continuar ")
+        elif(seleccionMenuPrincipal == 4):
+            print("Gracias por usar mi programa")
+        else:
+            leerIngreso("Selección incorrecta, por favor intente nuevamente")
+
+
 # Programa principal
 print("Bienvenido a mi programa!")
 separador()
-while (seleccionMenuPrincipal != 4):
-   seleccionMenuPrincipal = menuPrincipal()
-   if (seleccionMenuPrincipal == 1):
-      cargaVector(vectorOrigen)
-      vectorCargado = True
-   elif (seleccionMenuPrincipal == 2):
-        if (vectorCargado == True):
-            #pondría un try
-            numero = int(leerIngreso("Ingrese un número con el que comparar :"))
-            mayoresANumero(numero,vectorOrigen)
-        else:
-            leerIngreso("El vector aún no ha sido cargado, pulse Enter para continuar")
-   elif (seleccionMenuPrincipal == 3):
-        if (vectorCargado == True):
-            mostrarVector(vectorOrigen)
-        else:
-            print("El vector aún no ha sido cargado, pulse Enter para continuar")
-   elif(seleccionMenuPrincipal == 4):
-        print("Gracias por usar mi programa")
-   else:
-        print("Selección incorrecta, por favor intente nuevamente")
-  
-
-
+logicaMenuPrincipal()
 
 exit(0)
