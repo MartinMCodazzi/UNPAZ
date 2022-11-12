@@ -31,7 +31,7 @@ def leerIngreso(texto = "Pulse Enter para continuar :"):
 def cargaVector(vector):
     separador()
     for numeroPosicion in range(len(vector)):
-        # pondría un try
+        # pondría un try, porque si se hace enter sin numero, lanza excepcion
         numeroIngresado = int(leerIngreso(f"Ingrese un número para cargar en la posicion {numeroPosicion} :"))
         if (numeroIngresado > 0) :
             vector[numeroPosicion] = numeroIngresado
@@ -39,20 +39,21 @@ def cargaVector(vector):
             break
 
 def mayoresANumero(numeroAComparar,vector):
-    huboMayores = False
-    for numeroEnVector in vector:
+    huboMayores = False    
+    for numeroEnVector in vector:        
         if (numeroEnVector > numeroAComparar):
             print(f"{numeroEnVector} es mayor a {numeroAComparar}")
             huboMayores = True
-        if not huboMayores:
-            print(f"En el vector cargado, no extisten números mayores a {numeroAComparar}")
-            leerIngreso()
+    if not huboMayores:
+        print(f"En el vector cargado, no extisten números mayores a {numeroAComparar}")
+    
+    leerIngreso()
 
 def mostrarVector(vector):
     separador()
     print("Se ha cargado el siguiente vector:")
-    for numero in vector:
-        print(numero)
+    for indiceVector in range(len(vector)):
+        print(f"En la posición {indiceVector} del vector, hay cargado un {vector[indiceVector]}")
     leerIngreso()
 
 def logicaMenuPrincipal():
@@ -66,7 +67,7 @@ def logicaMenuPrincipal():
            vectorCargado = True
         elif (seleccionMenuPrincipal == 2):
             if (vectorCargado == True):
-                #pondría un try
+                 # pondría un try, porque si se hace enter sin numero, lanza excepcion
                 numero = int(leerIngreso("Ingrese un número con el que comparar : "))
                 mayoresANumero(numero,vectorOrigen)
             else:
@@ -80,7 +81,6 @@ def logicaMenuPrincipal():
             print("Gracias por usar mi programa")
         else:
             leerIngreso("Selección incorrecta, por favor intente nuevamente")
-
 
 # Programa principal
 print("Bienvenido a mi programa!")
