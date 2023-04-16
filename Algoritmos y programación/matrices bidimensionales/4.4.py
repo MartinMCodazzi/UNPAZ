@@ -2,8 +2,9 @@
 # Martín Nahuel Muñoz Codazzi
 
 """
-Efectuar la carga de una matriz de 3x2 desde teclado. Obtener como resultado la
-matriz transpuesta. Mostrarla por pantalla.
+Efectuar la carga de dos matrices de 3x3 desde teclado. Obtener como resultado el
+producto de matrices y colocarlo en una nueva matriz. Mostrar el resultado por
+pantalla.
 """
 import numpy as np
 import random
