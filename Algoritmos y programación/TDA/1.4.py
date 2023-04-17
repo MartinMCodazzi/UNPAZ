@@ -104,6 +104,46 @@ class TDAEmpleado:
     def getNombreCompleto(self):
         return f'{self.apellido}, {self.nombre}'
 
+### FIN DE LA CLASE ###
+
+def empleadoMasGanador(empleados) -> str:
+    ganador = empleados[0]
+    for empleado in empleados:
+        if empleado.sueldo > ganador.sueldo:
+            ganador = empleado
+    return f'El empleado que más gana es: {ganador.getNombreCompleto()}'
+
+def empleadoMenosGanador(empleados) -> str:
+    ganador = empleados[0]
+    for empleado in empleados:
+        if empleado.sueldo < ganador.sueldo:
+            ganador = empleado
+    return f'El empleado que menos gana es: {ganador.getNombreCompleto()}'
+    
+def informacionEmpleados(empleados) -> str:
+    temporal = 0
+    planta = 0
+    sueldoTemporal = 0
+    sueldoPlanta = 0
+    for empleado in empleados:
+        if empleado.categoria == 'T':
+            temporal += 1
+            sueldoTemporal += empleado.sueldo
+        elif empleado.categoria == 'P':
+            planta += 1
+            sueldoPlanta += empleado.sueldo
+    return f'La cantidad de empleados Temporales es: {temporal}\nEl promedio de sueldo de los empleados Temporales es: {sueldoTemporal/temporal}\nLa cantidad de empleados Planta es: {planta}\nEl promedio de sueldo de los empleados de Planta es: {sueldoPlanta/planta}'
+
+def buscarEmpleado(empleados) -> str:
+    id = input('Ingrese el ID del empleado a buscar: ')
+    for empleado in empleados:
+        if empleado.id == id:
+            return f'El empleado con ID {id} es: {empleado.getNombreCompleto()}'
+    return f'El empleado con el id {id} no existe en nuestros registros.'    
+
+def mostrarEmpleados(empleados) -> str:
+    pass
+
 def menuPrincipal():
     seleccion = 0
     while seleccion != 7:
@@ -136,13 +176,25 @@ def comportamientoMenuPrincipal():
         elif seleccion == 2:
             mostrarEmpleados()
         elif seleccion == 3:
-            empleadoMasGanador()
+            if len(listaEmpleados) == 0:
+                print("No hay empleados cargados.")
+                continue
+            print(empleadoMasGanador(listaEmpleados))
         elif seleccion == 4:
+            if len(listaEmpleados) == 0:
+                print("No hay empleados cargados.")
+                continue
             empleadoMenosGanador()
         elif seleccion == 5:
-            informacionEmpleados()
+            if len(listaEmpleados) == 0:
+                print("No hay empleados cargados.")
+                continue
+            print(informacionEmpleados(listaEmpleados))
         elif seleccion == 6:
-            buscarEmpleado()
+            if len(listaEmpleados) == 0:
+                print("No hay empleados cargados.")
+                continue            
+            print(buscarEmpleado())
         else:
             print("Gracias por usar nuestro sistema.")
 
@@ -177,6 +229,5 @@ def cargarEmpleados(arrayEmpleados):
         
 
 ### PROGRAMA PRINCIPAL  ###
-
 
 comportamientoMenuPrincipal()
