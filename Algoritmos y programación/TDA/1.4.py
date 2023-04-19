@@ -230,4 +230,4 @@ def cargarEmpleados(arrayEmpleados):
 
 ### PROGRAMA PRINCIPAL  ###
 
-comportamientoMenuPrincipal()
+comportamientoMenuPrincipal() 
