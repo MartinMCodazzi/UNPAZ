@@ -25,6 +25,14 @@ def procesarMatriz(matriz):
 
     print(f'La suma de los numeros positivos es: {positivos} \nMientras que la suma de los negativos es {negativos}')
 
+def probarEntero(numero) -> int:
+    while True:
+        try:
+            int(numero)
+        except ValueError:
+            numero = input('ERROR: Debe ingresar un número entero :')
+        else:
+            return int(numero)
 
 
 matriz = np.zeros((3,4)) 
