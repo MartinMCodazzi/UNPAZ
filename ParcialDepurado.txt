@@ -1,0 +1,1 @@
+debo depurar la cadena eliminando el carácter asterisco
