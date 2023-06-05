@@ -271,7 +271,7 @@ def escribirArchivo(lista, ruta):
             for examen in lista:
                 archivo.write(examen.showInFileFormat() + "\n")
     except:
-        raise("Error al escribir en archivo")
+        raise Exception("Error al escribir en archivo, ¿quizás falta de permisos de escritura?")
     else:
         return True
 
