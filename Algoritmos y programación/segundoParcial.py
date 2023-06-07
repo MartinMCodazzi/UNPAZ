@@ -1,41 +1,6 @@
 # Martín Nahuel Muñoz Codazzi
 # Segundo Parcial
-# 03/06/2023
-
-"""
-Antes de entregar:
-    - Modificar ruta de archivo en el root
-
-    TODO:
-        - Modificar las funciones para llamar a las variables globales lo menos posible
-        - Modificar cómo se lee el archivo
-        - Revisar todos los inputs, englobarlos en try
-        - Seguir revisando la búsqueda binaria de notas
-        - Si voy a lo específico de lo que se pide con respecto al punto 6, estoy trayendo más de lo que se pide
-        - Revisar los comentarios
-        - x BONUS: Posibilidad de cargar nuevos exámenes, y que las materias estén limitadas.
-        - ✓ BONUS: Modificar búsqueda binaria para contemplar que haya más de un resultado
-"""
-
-
-"""Desarrollar un algoritmo en python que mediante un menú de opciones permita
-
- ✓1) Leer un archivo de texto de Notas de Estudiantes alojado en la carpeta cd su ordenador “c:\pyfiles\examenes.txt”. Examenes.txt estará delimitados por ; (punto y coma) y proveer de su contenido al TDA la siguiente estructura: 
-
-    idExamen 
-    Apellido y Nombre Estudiante
-    Nota Estudiante
-    Materia
-
-✓ Validación 1) En la lectura deberá validarse mediante el uso de excepciones que la ruta existe y el archivo existe.
-✓ Validación 2) En la lectura deberá validarse que si el archivo está vacío se informa por pantalla “Archivo vacio” y finaliza el algoritmo.
-✓ 2) Dado el IdExamen permitir modificar datos del Exámen(no debe modificar el idExamen). Finalmente grabar el txt nuevamente.
-✓ 3) Dado el IdExamen permitir eliminar un examen (finalmente grabar el txt nuevamente)
-✓ 4) Informar los exámenes Ordenado por Nota (Método de burbuja)
-✓ 5) Buscar una nota mediante búsqueda binaria
-✓ 6) Ingresando el nombre de una materia traer todos los alumnos que rindieron y la nota.
-
-"""
+# 07/06/2023
 
 class TDAExamen:    
     def __init__(self, idExamen, nombreEstudiante, notaEstudiante, materia):
@@ -358,13 +323,12 @@ def modificarExamen(examen):
 
 def printTable(lista):
     """Recibo una lista de TDAExamen, y la imprimo como una tabla, ponele"""
-    limiteVertical = 20
+    limiteVertical = 10
     limiteHorizontal = 81
     def cabecera():
         separador("_",limiteHorizontal)
         print(f"|ID Examen\tNombre del estudiante\tNota del estudiante\tMateria\t\t|")
         separador("_",limiteHorizontal)
-
     veces = 0    
     cabecera()    
     for i in range(len(lista)):        
@@ -372,9 +336,15 @@ def printTable(lista):
         if (i + 1) % (limiteVertical) == 0 and i != 0:
             veces += 1                    
             print(f"Mostrando resultados {limiteVertical*(veces -1) + 1} a {limiteVertical*veces} de {len(lista)}")
-            input("Pulse Enter para continuar...")
+            try:
+                input("Pulse Enter para continuar...")
+            except KeyboardInterrupt:
+                print()
+                salidaPorInterrupt= True
+                break
             cabecera()
-    separador("_",limiteHorizontal)
+    if not salidaPorInterrupt:
+        separador("_",limiteHorizontal)
 
 def menuPrincipal():
     #Quizá cambie los elif por match-case...
@@ -589,14 +559,9 @@ def menuPrincipal():
         else:
             print("Opción incorrecta")
     
-#ruta = r"c:\pyfiles\examenes.txt"
-ruta = "examenes.txt"
+ruta = r"c:\pyfiles\examenes.txt"
+#ruta = "examenes.txt"
 materias = []
 listaTDA = []    
 settings = {'ordenado': False, 'archivo cargado': False, 'cantidad de examenes' : 0} #Lo creo acá, porque tiene que ser global
 menuPrincipal()
-
-#leerArchivo(listaTDA, ruta)
-#cargarMaterias(listaTDA, materias)
-#print(materias) 
-#print(getMateria())
