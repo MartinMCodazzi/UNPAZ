@@ -29,7 +29,6 @@ Antes de entregar:
 
 ✓ Validación 1) En la lectura deberá validarse mediante el uso de excepciones que la ruta existe y el archivo existe.
 ✓ Validación 2) En la lectura deberá validarse que si el archivo está vacío se informa por pantalla “Archivo vacio” y finaliza el algoritmo.
-
 ✓ 2) Dado el IdExamen permitir modificar datos del Exámen(no debe modificar el idExamen). Finalmente grabar el txt nuevamente.
 ✓ 3) Dado el IdExamen permitir eliminar un examen (finalmente grabar el txt nuevamente)
 ✓ 4) Informar los exámenes Ordenado por Nota (Método de burbuja)
@@ -90,23 +89,21 @@ class TDAExamen:
         resultado += "\t" if len(self.getMateria()) <= 7 else ""
         resultado += "\t" if len(self.getMateria()) <= 11 else ""
         resultado += "|"        
-        #Qué ganas de perder el tiempo!!! jajaja
+        # Qué ganas de jodeeer!!! XD
         return resultado
 
 def validadorFormatoExamen(linea):
-    """
-        Creé esta función para validar cada elemento que va a entrar al array de exámenes
-        Si todo sale bien, los valores convertidos a los formatos que corresponden
-    """
+    """ Creé esta función para validar cada elemento que va a entrar al array de exámenes
+        Si todo sale bien, los valores convertidos a los formatos que corresponden.
+        Creo que se puede mejorar para abarcar más casos, como el de modificar"""
     
-    try:
-        #idExamen = int(linea[0])
+    try:        
         idExamen = linea[0]  # No sé si hacerlo con integers o strings, por si hay que llenar los 0s a la izq
         nombreEstudiante = linea[1]
         notaEstudiante = float(linea[2])
         materia = linea[3]
 
-        if int(idExamen) < 0:
+        if int(idExamen) < 0: # Puede traer problemas, si por ejemplo, cambia el formato de idExamen
             raise Exception("Id del examen incorrecto")        
         if len(nombreEstudiante) < 3:
             raise Exception("Nombre de estudiante incorrecto, es muy corto")
@@ -116,12 +113,12 @@ def validadorFormatoExamen(linea):
             raise Exception("Formato de materia incorrecto")
     except Exception as e:
         print(f"Ocurrió un error al querer cargar el examen: {e}")
-        exit() #Directamente salgo del programa, quizá es mucho...
+        exit() #Directamente salgo del programa, quizá sea mucho...
 
     return idExamen, nombreEstudiante, notaEstudiante, materia
 
 def leerArchivo(lista, ruta):
-    """Esta función lee el archivo que se le pasa por parámetro y carga la lista que también se le pasa por parámetro
+    """ Esta función lee el archivo que se le pasa por parámetro y carga la lista que también se le pasa por parámetro
         En el proceso, chequea lo que se va a cargar al array usando la función validadorFormatoExamen
         Devuelve True si pudo cargar correctamente el archivo, False si no"""
     
@@ -186,10 +183,9 @@ def setSetting(key, valor):
 
 def bubbleSort(lista, parametro, modificaSetting = True):
     """Recibo una lista de TDAExamen y un parámetro, 
-    para ordenar la lista según ese parámetro. No devuelvo nada    
-    """    
-    n = len(lista)
-    # Recorrer todos los elementos del arreglo o lista
+    para ordenar la lista según ese parámetro. No devuelvo nada"""
+
+    n = len(lista)    
     match parametro:
         case "idExamen":
             for i in range(n - 1):        
@@ -202,6 +198,7 @@ def bubbleSort(lista, parametro, modificaSetting = True):
                         lista[j + 1] = aux
                 if not hayCambios:
                     break
+
         case "notaEstudiante":
             for i in range(n - 1):        
                 hayCambios = False
@@ -212,16 +209,18 @@ def bubbleSort(lista, parametro, modificaSetting = True):
                             lista[j] = lista[j + 1]
                             lista[j + 1] = aux
                 if not hayCambios:
-                    break        
-
+                    break
+        case _:
+            raise Exception(f"Parametrización de bubbleSort(lista,{parametro}) es inválido")
+        
     #Esto lo hago por si quiero ordenar un subset que, no sea la lista principal
     if modificaSetting:
         setSetting('ordenado',parametro)
     return    
 
 def busquedaBinariaModificada(lista, parametro, valor):
-    """Recibo una lista de TDAExamen, parametro (que sería la columna) y un valor, Devuelvo un TDaExamen en el caso de buscar por IDexamen, y una lista en el caso de buscar por nota  
-    Lo único a tener en cuenta es que la lista debe estar ordenada según el parámetro que estemos buscando, ya sea por id o por nota
+    """Recibo una lista de TDAExamen, parametro (que sería la columna) y un valor, Devuelvo UN TDAExamen en el caso de buscar por IDexamen, y una lista en el caso de buscar por nota  
+    Lo único a tener en cuenta es que la lista debe estar ordenada según el parámetro que esté buscando, ya sea por id o por nota
     """
     resultado = []     
     izq = 0
@@ -261,11 +260,10 @@ def busquedaBinariaModificada(lista, parametro, valor):
                     der = med - 1            
             return resultado
         case _:
-            raise Exception("Parametrización de búsqueda inválida")
+            raise Exception(f"Parametrización de búsquedaBinariaModificada(lista,{parametro},{valor}) inválida")
 
 def escribirArchivo(lista, ruta):
-    """Recibo una lista de TDAExamen, y la ruta para escribir a archivo
-    """
+    """Recibo una lista de TDAExamen, y la ruta para escribir a archivo"""
     try:
         with open(ruta, 'w',encoding='utf-8') as archivo:
             for examen in lista:
@@ -295,8 +293,8 @@ def getMateria():
             return globals()['materias'][seleccion - 1]
 
 def getExamenPorMateria(lista, materia):
-    """Recibo una lista de TDAExamen y una materia, y devuelvo una lista de TDAExamen
-    """
+    """Recibo una lista de TDAExamen y una materia, y devuelvo una lista de TDAExamen"""
+
     resultado = []
     for examen in lista:
         if examen.getMateria() == materia:
@@ -307,8 +305,8 @@ def getExamenPorMateria(lista, materia):
 def modificarExamen(examen):
     """Recibo TDAExamen, debería validar los datos antes de asignarlos    
     devuelvo el objeto modificado o False si se decide no modificarlo
-    Quizás debería comparar si se modificó alguna característica antes de volver
-    """
+    Quizás debería comparar si se modificó alguna característica antes de volver"""
+    
     examenModificado = examen
     while True:
         separador("-")
@@ -353,7 +351,7 @@ def modificarExamen(examen):
                         print("No se modificó la materia")
                 case 9: # Guardar cambios y volver al mená principal
                     return examenModificado
-                case 0: # Cancelar                    
+                case 0: # Cancelar
                     return False
                 case _:
                     print("Opción inválida")
@@ -379,7 +377,7 @@ def printTable(lista):
     separador("_",limiteHorizontal)
 
 def menuPrincipal():
-    #Quizá cambie los elif por case...
+    #Quizá cambie los elif por match-case...
     while True:        
         opcion = ""
         separador("_")
@@ -539,7 +537,7 @@ def menuPrincipal():
                             if getSetting('ordenado') != "notaEstudiante":
                                 bubbleSort(globals()['listaTDA'], "notaEstudiante")
                             try:
-                                examenABuscar = float(input("Ingrese la nota de los examenes a buscar: "))
+                                examenABuscar = float(input("Ingrese la nota a buscar: "))
                             except:
                                 print("ERROR: Ningún examen encontrado, escribió bien la nota?")
                             else:
