@@ -6,52 +6,42 @@ public class Fraccion {
 
 	public Fraccion(int numeradorIngresado, int denominadorIngresado) {
 		if (numeradorIngresado != 0) {
-			numerador = numeradorIngresado;
+			this.numerador = numeradorIngresado;
 		} else {
 			throw new IllegalArgumentException("El numerador no puede ser 0");
 		}
 		if (denominadorIngresado != 0) {
-			denominador = denominadorIngresado;
+			this.denominador = denominadorIngresado;
 		} else {
 			throw new IllegalArgumentException("El denominador no puede ser 0");
 		}
-
 	}
 
 	public void imprimir() {
-		System.out.println("la fracción es " + numerador + " / " + denominador);
+		System.out.println("la fracción es " + this.numerador + " / " + this.denominador);
 	}
 
 	public void invertirSigno() {
-		numerador = numerador * -1;
-		imprimir();
+		this.numerador = this.numerador * -1;		
 	}
 
-	public void invertir() {
-		/*
-		 * Hubiera preferido que este método devuelva una fracción, en vez de ser void
-		 */
+	public void invertir() {		
 		int temporal;
-		if (numerador < 0) {
-			temporal = numerador * -1;
-			numerador = denominador * -1;
+		if (this.numerador < 0) {
+			temporal = this.numerador * -1;
+			this.numerador = this.denominador * -1;
 		} else {
 			temporal = numerador;
-			numerador = denominador;
+			this.numerador = this.denominador;
 		}
-		denominador = temporal;
-		imprimir();
+		denominador = temporal;		
 	}
 
 	public double aDouble() {
 		return (double) numerador / denominador;
 	}
 
-	public void reducir() {
-		/*
-		 * Hubiera preferido que este método devuelva una fracción, en vez de ser void,
-		 * podría haber hecho más fácil la impresión
-		 */
+	public void reducir() {		
 		int a, b;
 		if (numerador < 0) {
 			a = numerador * -1;
@@ -65,56 +55,23 @@ public class Fraccion {
 			a = temp;
 		}
 		numerador = numerador / a;
-		denominador = denominador / a;
-		imprimir();
-
+		denominador = denominador / a;		
 	}
 
-	static Fraccion producto(Fraccion q1, Fraccion q2) {
-
-		Fraccion resultado = new Fraccion(q1.numerador * q2.numerador, q1.denominador * q2.denominador);
-		int a, b;
-		// Raro que me deje acceder a los atributos directamente, si son privados
-		// Redundante, pero no quiero hacer más métodos de los pedidos por consigna
-		if (resultado.numerador < 0) {
-			a = resultado.numerador * -1;
-		} else {
-			a = resultado.numerador;
-		}
-		b = resultado.denominador;
-		while (b != 0) {
-			int temp = b;
-			b = a % b;
-			a = temp;
-		}
-		resultado.numerador = resultado.numerador / a;
-		resultado.denominador = resultado.denominador / a;
-
+	static Fraccion producto(Fraccion fraccion1, Fraccion fraccion2) {		
+		Fraccion resultado = new Fraccion(fraccion1.numerador * fraccion2.numerador,
+										fraccion1.denominador * fraccion2.denominador);				
+		resultado.reducir();
 		return resultado;
 	}
 
 	static Fraccion suma(Fraccion q1, Fraccion q2) {
 		Fraccion resultado = new Fraccion(
 				(q1.numerador * q2.denominador) + (q2.numerador * q1.denominador),
-				q1.denominador * q2.denominador);
-		int a, b;
-		// Redundante, pero no quiero hacer más métodos de los pedidos por consigna
-		if (resultado.numerador < 0) {
-			a = resultado.numerador * (-1);
-		} else {
-			a = resultado.numerador;
-		}
-		b = resultado.denominador;
-		while (b != 0) {
-			int temp = b;
-			b = a % b;
-			a = temp;
-		}
-		resultado.numerador = resultado.numerador / a;
-		resultado.denominador = resultado.denominador / a;
-
-		return resultado;
-		
+				q1.denominador * q2.denominador);		
+		resultado.reducir();
+		return resultado;		
 	}
-
+	
+	
 }

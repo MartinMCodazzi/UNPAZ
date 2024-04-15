@@ -91,6 +91,8 @@ class FraccionTest {
 		assertEquals(2.0, fraccion.aDouble(), 0);
 		fraccion = new Fraccion(10, 4);
 		assertEquals(2.5, fraccion.aDouble(), 0);
+		fraccion = new Fraccion(10, 25);
+		assertEquals(0.4, fraccion.aDouble(), 0);
 	}
 
 	@Test
