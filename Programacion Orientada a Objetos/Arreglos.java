@@ -1,4 +1,4 @@
-// Martín Nahuel Muñoz Codazzi - 14 abr. 2024
+//Martin Nahuel Muñoz Codazzi - 14/04/2024
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,11 @@ final class Arreglos {
 
 	static int[] pegar(int[] array1, int[] array2) {
 		int nuevoArray[] = new int[array1.length + array2.length];
-		for (int indiceDelNuevoArray = 0; indiceDelNuevoArray < nuevoArray.length; /* indiceDelNuevoArray++ */) {
+		for (int indiceDelNuevoArray = 0; indiceDelNuevoArray < nuevoArray.length;) {
 
-			for (int indiceDelPrimerArray = 0; indiceDelPrimerArray < array1.length; indiceDelPrimerArray++) {
+			for (int indiceDelPrimerArray = 0; indiceDelPrimerArray < array1.length; 
+					indiceDelPrimerArray++) {
+				
 				nuevoArray[indiceDelNuevoArray] = array1[indiceDelPrimerArray];
 				indiceDelNuevoArray++;
 			}

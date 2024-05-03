@@ -1,5 +1,3 @@
-// Martín Nahuel Muñoz Codazzi - 14 abr. 2024
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Assert;

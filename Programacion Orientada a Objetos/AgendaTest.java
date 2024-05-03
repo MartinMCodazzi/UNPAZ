@@ -64,7 +64,7 @@ class AgendaTest {
 	}
 	
 	@Test
-	@DisplayName("dameTelefono recibe una Persona,devuelve su número de teléfono")
+	@DisplayName("dameTelefono() recibe una Persona,devuelve su número de teléfono")
 	void testDameTelefono() {
 		Agenda agenda = new Agenda(1);
 		agenda.guardar(persona1, "123456789");
