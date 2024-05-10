@@ -2,13 +2,29 @@
 
 package punto7;
 
-public class Comision {
+import java.util.Arrays;
 
+public class Comision {
 	private String materia;
 	private int numero;
 	private Docente[] docentes;
 	private Estudiante[] inscriptos;
 	private int[] calificaciones;
+	
+	/**
+	 * @param materia
+	 * @param numero
+	 * @param docentes
+	 * @param inscriptos
+	 * @param calificaciones
+	 */
+	public Comision(String materia, int numero, Docente[] docentes, Estudiante[] inscriptos, int[] calificaciones) {		
+		this.materia = materia;
+		this.numero = numero;
+		this.docentes = docentes;
+		this.inscriptos = inscriptos;
+		this.calificaciones = calificaciones;
+	}
 	
 	public String getMateria() {
 		return materia;
@@ -34,25 +50,20 @@ public class Comision {
 	public void setInscriptos(Estudiante[] inscriptos) {
 		this.inscriptos = inscriptos;
 	}
-	public int[] getCalificaciones() {
+	public int[] getCalificaciones() {		
 		return calificaciones;
 	}
 	public void setCalificaciones(int[] calificaciones) {
 		this.calificaciones = calificaciones;
 	}
-	/**
-	 * @param materia
-	 * @param numero
-	 * @param docentes
-	 * @param inscriptos
-	 * @param calificaciones
-	 */
-	public Comision(String materia, int numero, Docente[] docentes, Estudiante[] inscriptos, int[] calificaciones) {
-		super();
-		this.materia = materia;
-		this.numero = numero;
-		this.docentes = docentes;
-		this.inscriptos = inscriptos;
-		this.calificaciones = calificaciones;
+
+	
+	@Override
+	public String toString() {
+		return "Comision [materia=" + materia + ", numero=" + numero + ", docentes=" + Arrays.toString(docentes)
+				+ ", inscriptos=" + Arrays.toString(inscriptos) + ", calificaciones=" + Arrays.toString(calificaciones)
+				+ "]";
 	}
+	
+	
 }

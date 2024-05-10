@@ -11,28 +11,31 @@ import org.junit.jupiter.api.Test;
  * 
  */
 class EstudianteTest {
-
+	Estudiante estudiante1;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		estudiante1 = new Estudiante("estudiante1", 1234);
 	}
 
 	/**
 	 * Test method for {@link punto7.Estudiante#getNombre()}.
 	 */
 	@Test
-	void testGetNombre() {
-		fail("Not yet implemented");
+	void testGetNombre() {		
+		assertEquals(estudiante1.getNombre(), "estudiante1");
 	}
 
 	/**
 	 * Test method for {@link punto7.Estudiante#setNombre(java.lang.String)}.
 	 */
 	@Test
-	void testSetNombre() {
-		fail("Not yet implemented");
+	void testSetNombre() {		
+		estudiante1.setNombre("estudiante_1");
+		assertEquals(estudiante1.getNombre(), "estudiante_1");
 	}
 
 	/**
@@ -40,7 +43,7 @@ class EstudianteTest {
 	 */
 	@Test
 	void testGetLegajo() {
-		fail("Not yet implemented");
+		assertEquals(estudiante1.getLegajo(), 1234);
 	}
 
 	/**
@@ -48,7 +51,15 @@ class EstudianteTest {
 	 */
 	@Test
 	void testSetLegajo() {
-		fail("Not yet implemented");
+		estudiante1.setLegajo(12345);
+		assertEquals(estudiante1.getLegajo(), 12345);
+	}
+	/**
+	 * Test method for {@link punto7.Estudiante#toString()}.
+	 */
+	@Test
+	void testToString() {		
+		assertEquals(estudiante1.toString(), "Estudiante [nombre: estudiante1, legajo: 1234]" );
 	}
 
 }
