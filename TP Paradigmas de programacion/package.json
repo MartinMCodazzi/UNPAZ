@@ -1,0 +1,15 @@
+{
+  "name": "tp-paradigmas-de-programacion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Martin Muñoz Codazzi",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

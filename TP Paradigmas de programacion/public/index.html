@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coliseo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" href="/public/favicon.ico">
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Coliseo</a>
+        </div>
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <div class="text-center">
+            <div>Tipo de batallas:</div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ataquesRandom"
+                    value="ataquesRandom" checked>
+                <label class="form-check-label" for="ataquesRandom">Ataques random</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ataquesSecuencia"
+                    value="ataquesSecuencia">
+                <label class="form-check-label" for="inlineRadio2">Ataques en secuencia</label>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+
+            <!-- Mermellion -->
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" id="nombreJ1"></h5>
+                        <div class="text-center">
+                            <img src="/public/img/Mermellion.jpg" class="img-thumbnail imagen align-center" alt="...">
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <div class="accordion" id="accordionJ1">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseAtq1"
+                                            aria-expanded="true" aria-controls="collapseAtq1">
+                                            Nivel de ataque: <span class="mx-5" id="ataqueJ1"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseAtq1" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionJ1">
+                                        <div class="accordion-body">
+                                            <div class="container" id="detalleAtaqueJ1"></div>
+                                            <button onclick="cambiarArma(gladiador1)"
+                                                class="btn btn-outline-success btn-sm">Cambiar arma</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseDef1"
+                                            aria-expanded="false" aria-controls="collapseDef1">
+                                            Nivel de defensa: <span class="mx-5" id="defensaJ1"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDef1" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionJ1">
+                                        <div class="accordion-body">
+                                            <span id="detalleDefensaJ1"></span>
+                                            <button onclick="cambiarArmadura(gladiador1)" type="button" class="btn btn-outline-success btn-sm">Cambiar
+                                                armadura</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="card-text">Su estilo es uno de los más clásicos dado que salían a combatir con un
+                            arma de mano, en general una espada o gladius, más un escudo rectangular o un casco
+                            con cresta. La fuerza promedio de este tipo de gladiadores es variable y su destreza es
+                            siempre 15. Puede cambiar su armadura</p>
+                        <a onclick="mostrarArena(gladiador1, gladiador2)" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Seleccionar <span id="btnJ1"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimachaereus -->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" id="nombreJ2"></h5>
+                        <div class="text-center">
+                            <img src="/public/img/Dimachareus.png" class="img-thumbnail imagen align-center" alt="...">
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <div class="accordion" id="accordionJ2">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseAtq2"
+                                            aria-expanded="true" aria-controls="collapseAtq2">
+                                            Nivel de ataque: <span class="mx-5" id="ataqueJ2"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseAtq2" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionJ2">
+                                        <div class="accordion-body">
+                                            <div class="container" id="detalleAtaqueJ2"></div>
+                                            <button onclick="cambiarArma(gladiador2)"
+                                                class="btn btn-outline-success btn-sm">Cambiar armas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseDefJ2"
+                                            aria-expanded="false" aria-controls="collapseDefJ2">
+                                            Nivel de defensa: <span class="mx-5" id="defensaJ2"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDefJ2" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionJ2">
+                                        <div class="accordion-body" id="detalleDefensaJ2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="card-text">Estos gladiadores peleaban con varias armas. No usaban armadura
+                            porque eran tipos duros. Los dimachaerus eran gladiadores que se valían mucho de sus
+                            habilidades, tienen una fuerza de 10 y una destreza en particular que puede ser diferente
+                            para cada gladiador</p>
+
+                        <a onclick="mostrarArena(gladiador2,gladiador1)" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Seleccionar <span id="btnJ2"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Arena</h1>
+
+                    </div>
+                    <div class="modal-body">
+                        <div class="container" id="arena"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><span
+                                id="botonDentroDeModal"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script src="/public/js/Armaduras.js"></script>
+        <script src="/public/js/Armas.js"></script>
+        <script src="/public/js/Gladiadores.js"></script>
+        <script src="/public/js/logicaDelJuego.js"></script>
+
+</body>
+</html>
