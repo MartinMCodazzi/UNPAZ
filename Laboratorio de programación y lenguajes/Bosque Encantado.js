@@ -84,8 +84,7 @@ class Domador extends Rol {
         } else {
             console.error("No fué posible el cambio de rol, no se cumplen los requisitos");
             return this;
-        }
-        throw new Error("Método no implementado en la clase Domador");
+        }        
     };
     getEsExtraordinario(criatura) {
         //Es extraorinario si el poder mágico de la criatura es mayor o igual a 15, y si todas sus mascotas mágicas son veteranas. 
