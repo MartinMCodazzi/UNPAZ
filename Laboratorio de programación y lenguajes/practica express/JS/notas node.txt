@@ -1,0 +1,52 @@
+js del lado del server
+motor de js V8, es un lenguaje interpretado
+usa el archivo package.json 
+    > descripcion del proyecto, version, modulos > también incluye scripts
+    > Acá se declaran los scripts a ejecutar en formato json
+    > Seccion de dependencias 
+        -> que son siempre necesarias
+        -> que se necesitan sólo cuando se desarrolla
+
+npm init (-y)
+
+npm install -D nodemon (-D instala dependencia en desarrollo)
+npm install lodash (instala dependencia de produccion)
+
+npm run dev -> cuando no se ejecute un script como test, o init, va primero run
+
+const lodash = require('lodash')
+
+--- ooo ---
+
+Servidor web Debe:
+    escuchar listen (puerto)
+    recibir solicitudes:
+        PATH '/'
+        GET         ->  200 OK
+        POST        ->  201 CREATED
+        DELETE      ->  200 OK / 204 NO_CONTENT
+        PUT         ->  200 OK
+        PATCH       ->  200 OK
+    Respuesta:
+        código
+        json
+
+Dependencia EXPRESS
+
+24/04/2025
+
+Funciones lambda:
+const fn1 = x => x > 10
+const fn2 = x => x % 2 == 0
+const fn3 = x => x % 5 == 0
+module.export = {fn1,fn2,fn3} <- Son clave:valor ES UN OBJETO!!!
+
+const funciones = require ('./ funciones.js')  <- Trae todo aunque no lo usemos
+funciones.fn2($valor)
+
+const { fn2 } = require ('./ funciones.js') <- Sólo trae fn2
+fn2($valor)
+
+const  fn2  = require ('./ funciones.js') <- lo mismo que el primero, trae todo
+
+const  fn2  = require ('./ funciones.js')['fn2'] <- lo mismo que el segundo, trae sólo fn2
