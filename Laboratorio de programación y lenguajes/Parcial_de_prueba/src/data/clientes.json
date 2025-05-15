@@ -1,0 +1,20 @@
+[
+  {
+    "id": 101,
+    "nombre": "María López",
+    "email": "maria.lopez@mail.com",
+    "direccion": "Avenida Principal 1234, Santiago"
+  },
+  {
+    "id": 102,
+    "nombre": "Carlos Ruiz",
+    "email": "carlos.ruiz@mail.com",
+    "direccion": "Calle Los Alamos 55, Valparaíso, 258963"
+  },
+  {
+    "id": 103,
+    "nombre": "Ana Díaz",
+    "email": "ana.diaz@mail.com",
+    "direccion": "Bulevar Central #202, piso 5"
+  }
+]
