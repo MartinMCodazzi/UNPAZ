@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const reglas = require('../politica/reglas.js'); // el doble punto me hizo perder mucho tiempoooooo!!!!
+const reglas = require('./politica/reglas.js'); // el doble punto me hizo perder mucho tiempoooooo!!!!
 const usuarios = require('./data/usuarios.json');
 
 const PORT = process.env.PORT || 3000; // uso linux
