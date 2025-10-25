@@ -1,0 +1,50 @@
+<%- include('layout/header'); -%>
+    <%- include('layout/navbar'); -%>
+    
+        <div class="container mt-5">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Poder Mágico</th>
+                        <th scope="col">Astucia</th>
+                        <th scope="col">Colonia</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Tipo de Criatura</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% criaturas.forEach((criatura)=> {%>
+                        <tr>
+                            <td>
+                                <%=criatura.criatura_id %>
+                            </td>
+                            <td>
+                                <%=criatura.edad %>
+                            </td>
+                            <td>
+                                <%=criatura.poderMagico %>
+                            </td>
+                            <td>
+                                <%=criatura.astucia %>
+                            </td>
+                            <td>
+                                <%=criatura.colonia %>
+                            </td>
+                            <td>
+                                <%=criatura.rol_descripcion %>
+                            </td>
+                            <td>
+                                <%=criatura.tipoCriatura %>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning">Editar</button>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <%- include('layout/footer'); -%>

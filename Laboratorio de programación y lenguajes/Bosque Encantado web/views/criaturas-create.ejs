@@ -1,0 +1,52 @@
+<%- include('layout/header'); -%>
+    <%- include('layout/navbar'); -%>
+    
+    <div class="container mt-5">    
+        <form action="crear" method="POST">
+
+            <div class="mb-3">
+                <label for="select_colonia" class="form-label">Colonia</label>
+                <select class="form-select" aria-label="Select colonia" name="colonia_id" id="select_colonia">
+                    <% colonias.forEach((colonia) => { %>
+                      <option value="<%= colonia.colonia_id %>"><%= colonia.descripcion %></option>
+                    <% }) %>
+                  </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="select_tipoCriatura" class="form-label">Tipo de criatura</label>
+                <select class="form-select" aria-label="Select roles" name="tipoCriatura_id" id="select_tipoCriatura">
+                    <% tipoCriaturas.forEach((tipo) => { %>
+                      <option value="<%= tipo.tipoCriatura_id %>"><%= tipo.descripcion %></option>
+                    <% }) %>
+                  </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="select_rol_id" class="form-label">Rol</label>
+                <select class="form-select" aria-label="Select roles" name="rol_id" id="select_rol_id">
+                    <% roles.forEach((rol) => { %>
+                      <option value="<%= rol.rol_id %>"><%= rol.descripcion %></option>
+                    <% }) %>
+                  </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="input_edad" class="form-label">Edad</label>
+              <input type="number" class="form-control" id="input_edad" name="edad" aria-describedby="edad">              
+            </div>
+
+            <div class="mb-3">
+                <label for="input_poder_magico" class="form-label">Poder Magico</label>
+                <input type="number" class="form-control" id="input_poder_magico" name="poderMagico" aria-describedby="Poder Magico">              
+              </div>
+
+              <div class="mb-3">
+                <label for="input_astucia" class="form-label">Astucia</label>
+                <input type="number" class="form-control" id="input_astucia" name="astucia" aria-describedby="Astucia">              
+              </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+<%- include('layout/footer'); -%>

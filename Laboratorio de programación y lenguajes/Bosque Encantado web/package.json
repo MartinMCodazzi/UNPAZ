@@ -1,0 +1,21 @@
+{
+  "name": "bosque-encantado-web",
+  "version": "1.0.0",
+  "description": "Web de Bosque encantado",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "Martìn Muñoz Codazzi",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.9.1",
+    "bootstrap": "^5.3.5",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
